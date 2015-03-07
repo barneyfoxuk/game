@@ -9,14 +9,6 @@ var Bird = function(game) {
     game.physics.arcade.enable(this.sprite);
     this.sprite.body.gravity.y = 500;
 
-    // Call the 'jump' function when the spacekey is hit
-    var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    spaceKey.onDown.add(this.startFlying, this);
-    game.input.onDown.add(this.startFlying, this);
-    spaceKey.onUp.add(this.stopFlying, this);
-    game.input.onDown.add(this.stopFlying, this);
-
-
     //create fly loop
     this.jumpTimer = game.time.events.loop(50, function() {
         var ammount = (that.startOfFlight === true) ? -100 : -40;

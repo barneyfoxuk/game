@@ -22,7 +22,15 @@ var mainState = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.bird = new Bird(game);
-        this.floor = new Floor(game);         
+        this.floor = new Floor(game);
+
+        //controls
+        console.log('this.input', this.input);
+        var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        spaceKey.onDown.add(this.bird.startFlying, this.bird);
+        this.input.onDown.add(this.bird.startFlying, this.bird);
+        spaceKey.onUp.add(this.bird.stopFlying, this.bird);
+        this.input.onUp.add(this.bird.stopFlying, this.bird);    
 
         // Add a score label on the top left of the screen
         this.score = 0;
