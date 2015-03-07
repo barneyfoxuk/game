@@ -1,4 +1,4 @@
-var Floor = function(game) {
+var Letters = function(game) {
   // Create a group of 20 pipes
   this.group = game.add.group();
   this.group.enableBody = true;
@@ -8,17 +8,17 @@ var Floor = function(game) {
   this.timer = game.time.events.loop(250, this.addFloorTile, this);  
 }
 
-Floor.prototype.addFloorTile = function() {
+Letters.prototype.addOne = function() {
   // Get the first dead pipe of our group
-  var floorTile = this.group.getFirstDead();
+  var letter = this.group.getFirstDead();
 
   // Set the new position of the pipe
-  floorTile.reset(400,  (Math.random() * 460)  );
+  letter.reset(400, 50 + (Math.random() * 300)  );
 
   // Add velocity to the pipe to make it move left
-  floorTile.body.velocity.x = -200; 
+  letter.body.velocity.x = -200; 
          
   // Kill the pipe when it's no longer visible 
-  floorTile.checkWorldBounds = true;
-  floorTile.outOfBoundsKill = true;
+  letter.checkWorldBounds = true;
+  letter.outOfBoundsKill = true;
 };

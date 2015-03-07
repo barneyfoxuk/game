@@ -10,7 +10,7 @@ var mainState = {
         game.stage.backgroundColor = '#71c5cf';
 
         // Load the bird sprite
-        game.load.image('bird', 'assets/bird.png');  
+        game.load.image('bird', 'assets/bird_small.png');  
 
         // Load the pipe sprite
         game.load.image('floorTile', 'assets/pipe.png');      
@@ -36,7 +36,7 @@ var mainState = {
             this.restartGame(); 
 
         // If the bird overlap any pipes, call 'restartGame'
-        game.physics.arcade.overlap(this.bird.sprite, this.floor.floor, this.restartGame, null, this);      
+        game.physics.arcade.overlap(this.bird.sprite, this.floor.group, this.restartGame, null, this);      
     },
 
     
