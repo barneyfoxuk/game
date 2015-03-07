@@ -10,10 +10,10 @@ var mainState = {
         game.stage.backgroundColor = '#71c5cf';
 
         // Load the bird sprite
-        game.load.image('bird', 'assets/bird_small.png');  
+        game.load.image('bird', 'assets/tal.png');  
 
         // Load the pipe sprite
-        game.load.image('floorTile', 'assets/pipe.png');      
+        game.load.image('floorTile', 'assets/dick.png');      
     },
 
     // Fuction called after 'preload' to setup the game 
@@ -36,7 +36,11 @@ var mainState = {
             this.restartGame(); 
 
         // If the bird overlap any pipes, call 'restartGame'
-        game.physics.arcade.overlap(this.bird.sprite, this.floor.group, this.restartGame, null, this);      
+        game.physics.arcade.overlap(this.bird.sprite, this.floor.group, this.restartGame, null, this);   
+
+        //update score
+        this.score += 1;
+        this.labelScore.text = "Score: "+this.score;     
     },
 
     
@@ -47,33 +51,7 @@ var mainState = {
         game.state.start('main');
     },
 
-    // // Add a pipe on the screen
-    // addOnePipe: function(x, y) {
-    //     // Get the first dead pipe of our group
-    //     var pipe = this.pipes.getFirstDead();
 
-    //     // Set the new position of the pipe
-    //     pipe.reset(x, y);
-
-    //     // Add velocity to the pipe to make it move left
-    //     pipe.body.velocity.x = -200; 
-               
-    //     // Kill the pipe when it's no longer visible 
-    //     pipe.checkWorldBounds = true;
-    //     pipe.outOfBoundsKill = true;
-    // },
-
-    // // Add a row of 6 pipes with a hole somewhere in the middle
-    // addRowOfPipes: function() {
-    //     var hole = Math.floor(Math.random()*5)+1;
-        
-    //     for (var i = 0; i < 8; i++)
-    //         if (i != hole && i != hole +1) 
-    //             this.addOnePipe(400, i*60+10);   
-    
-    //     this.score += 1;
-    //     this.labelScore.text = this.score;  
-    // },
 };
 
 // Add and start the 'main' state to start the game
